@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, #e0f7fa, #ffffff, #e3f2fd, #f3e5f5);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Main Cards */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 
+                0 1px 3px rgba(0,0,0,0.05);
+    max-width: 850px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.login-container {
+    max-width: 450px;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-weight: 700;
+    color: #1a252f;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+p.subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+}
+
+/* Header & Logout */
+.header-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -1rem;
+}
+
+.logout-btn {
+    text-decoration: none;
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 2px solid #ff6b6b;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #ff6b6b;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* Form Layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #34495e;
+    transition: color 0.3s ease;
+}
+
+input {
+    padding: 0.9rem 1rem;
+    border: 2px solid #ecf0f1;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00b4db;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 180, 219, 0.1);
+}
+
+input:focus + label {
+    color: #00b4db;
+}
+
+/* Button & Loading Animation */
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+button {
+    background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 131, 176, 0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(0, 131, 176, 0.3);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* CSS Loader */
+.loader {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(0, 180, 219, 0.3);
+    border-radius: 50%;
+    border-top-color: #00b4db;
+    animation: spin 1s ease-in-out infinite;
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Results */
+#result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#result.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.positive {
+    background: linear-gradient(135deg, #fff3f3 0%, #ffe6e6 100%);
+    color: #d63031;
+    border-left: 5px solid #d63031;
+    box-shadow: 0 10px 20px rgba(214, 48, 49, 0.1);
+}
+
+.negative {
+    background: linear-gradient(135deg, #f0fff4 0%, #e6ffed 100%);
+    color: #00b894;
+    border-left: 5px solid #00b894;
+    box-shadow: 0 10px 20px rgba(0, 184, 148, 0.1);
+}
+
+/* Error Banner on Login */
+.error-banner {
+    background-color: #fff3f3;
+    color: #d63031;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    border-left: 4px solid #d63031;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+body {
+    /* Medical background image with a soft, semi-transparent blue overlay */
+    background: linear-gradient(rgba(236, 240, 241, 0.7), rgba(52, 152, 219, 0.5)),
+                url('https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* You can safely remove the @keyframes gradientBG block from your CSS */
+
+.container {
+    /* Lowered background opacity and increased blur for a premium glass effect */
+    background: rgba(255, 255, 255, 0.80); 
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 
+                0 1px 3px rgba(0,0,0,0.1);
+    max-width: 850px;
+    width: 100%;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Adds a crisp glass edge */
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
